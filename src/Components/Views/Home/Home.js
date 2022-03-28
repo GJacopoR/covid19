@@ -1,3 +1,3 @@
 export default function Home(){
-    return(<p>Sono la home!</p>)
+    return(<p className="bg-red-600">Sono la home!</p>)
 } 
