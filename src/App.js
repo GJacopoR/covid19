@@ -7,7 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from './Components/Views/Home/Home';
-import Test from './Components/Views/Test/Test';
+import Regions from './Components/Views/Regions/Regions';
 import { Navbar } from './Components/UI/Navbar/Navbar';
 
 
@@ -26,8 +26,6 @@ function App() {
       <div>
         <Routes>
           <Route path="/region/:region">
-          </Route>
-          <Route path="/test" element={<Test />}>
           </Route>
           <Route path="/" element={data && <Home data={data}/>}>
           </Route>
