@@ -1,42 +1,35 @@
 import './App.css';
-import React from "react";
+import React, {useEffect, useState} from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
 } from "react-router-dom";
-
 import Home from './Components/Views/Home/Home';
 import Test from './Components/Views/Test/Test';
+import { Navbar } from './Components/UI/Navbar/Navbar';
+
 
 function App() {
+  
+  const [data, setData] = useState(null)
+
+  useEffect(() => {fetch(`https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json`)
+  .then(response => response.json())
+  .then(data => setData(data))
+  },[])
+
   return (
     <Router>
+      <Navbar />
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/test">Test</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Routes>
           <Route path="/region/:region">
-            
           </Route>
           <Route path="/test" element={<Test />}>
           </Route>
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={data && <Home data={data}/>}>
           </Route>
         </Routes>
       </div>
