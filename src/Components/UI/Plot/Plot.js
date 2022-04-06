@@ -48,6 +48,10 @@ export default function Plot(props) {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    chart.current.data = props.data;
+  }, [props.data]);
+
   return (
     <div id="plot" style={{ width: "100%", height: "500px" }}></div>
   );

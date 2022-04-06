@@ -25,7 +25,7 @@ function App() {
       <Navbar />
       <div>
         <Routes>
-          <Route path="/region/:region">
+          <Route path="/regions" element={<Regions/>}>
           </Route>
           <Route path="/" element={data && <Home data={data}/>}>
           </Route>
